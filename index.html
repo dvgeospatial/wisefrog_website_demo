@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wisefrog Business Homepage</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #061c02;
+            font-weight: bold; /* Ensures all text is bold */
+            line-height: 2;     /* Double line spacing globally */
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            line-height: normal; /* Reset for header to prevent massive expansion */
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-container img {
+            height: 150px;
+            width: auto;
+        }
+        
+        /* Navigation Styling */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Main Menu Items */
+        nav ul li {
+            position: relative; 
+        }
+        
+        nav ul li > a {
+            text-decoration: none;
+            color: #061c02;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 10px 0;
+            display: block;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover Line Effect */
+        nav > ul > li > a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 5px;
+            left: 0;
+            background-color: #061c02;
+            transition: width 0.3s ease;
+        }
+        nav > ul > li:hover > a::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu Styling */
+        nav ul ul {
+            display: none; 
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 1px solid #061c02; 
+            min-width: 150px;
+            flex-direction: column;
+            gap: 0;
+            padding: 5px 0;
+            z-index: 1001;
+        }
+
+        /* Show Dropdown on Hover */
+        nav ul li:hover > ul {
+            display: flex;
+        }
+
+        /* Dropdown Links */
+        nav ul ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+        }
+
+        nav ul ul li a:hover {
+            background-color: #f0f0f0; 
+            color: #061c02;
+        }
+        
+        nav ul ul li a::after {
+            display: none; 
+        }
+
+        main {
+            padding: 80px 40px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        main h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #061c02;
+            font-weight: bold;
+            line-height: 1.2; /* Kept slightly tighter for the large title */
+        }
+        main p {
+            font-size: 1.25rem;
+            color: #061c02;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 2; /* Explicit double spacing */
+            font-weight: bold;
+        }
+
+        /* New Content Sections */
+        .content-section {
+            padding: 60px 40px;
+            text-align: center;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .content-section p {
+            font-size: 1.2rem;
+            line-height: 2; /* Explicit double spacing */
+            color: #061c02;
+            font-weight: bold; /* Explicit bold */
+        }
+        
+        /* Specific Backgrounds */
+        .bg-pale-green {
+            background-color: rgba(6, 28, 2, 0.08); 
+        }
+        .bg-white {
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <!-- Ensure your file is named exactly 'logo_061c02.png' in the same folder -->
+            <img src="logo_061c02.png" alt="Wisefrog Logo">
+        </div>
+        <nav aria-label="Primary">
+            <ul>
+                <li>
+                    <a href="#services">Services ▾</a>
+                    <ul>
+                        <li><a href="#one">one</a></li>
+                        <li><a href="#two">two</a></li>
+                        <li><a href="#three">three</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#portfolio">Portfolio ▾</a>
+                    <ul>
+                        <li><a href="#one">one</a></li>
+                        <li><a href="#two">two</a></li>
+                        <li><a href="#three">three</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#about">About Us ▾</a>
+                    <ul>
+                        <li><a href="#one">one</a></li>
+                        <li><a href="#two">two</a></li>
+                        <li><a href="#three">three</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#contact">Contact Us ▾</a>
+                    <ul>
+                        <li><a href="#one">one</a></li>
+                        <li><a href="#two">two</a></li>
+                        <li><a href="#three">three</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Welcome to Wisefrog</h1>
+        <p>Integrated communications and mapping solutions that transform complex environmental data and policies into clear, engaging stories and interactive tools—driving impact, insight, and action for nature recovery and a greener economy.</p>
+    </main>
+
+    <!-- First New Block: Pale Background -->
+    <section class="content-section bg-pale-green">
+        <div class="content-container">
+            <p>Expert communications, editorial, and policy support services that translate complex EU biodiversity, environment, and development initiatives into clear, engaging content—strengthening visibility, stakeholder engagement, and impact across international conservation programmes.</p>
+        </div>
+    </section>
+
+    <!-- Second New Block: White Background -->
+    <section class="content-section bg-white">
+        <div class="content-container">
+            <p>Data-driven web mapping and spatial analysis services that turn complex environmental and policy data into clear, interactive maps—supporting better decisions, stronger community engagement, and more effective nature recovery on the ground.</p>
+        </div>
+    </section>
+
+</body>
+</html>
