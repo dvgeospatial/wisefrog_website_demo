@@ -10,8 +10,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #ffffff;
             color: #061c02;
-            font-weight: bold; /* Ensures all text is bold */
-            line-height: 2;     /* Double line spacing globally */
+            font-weight: bold;
         }
         header {
             display: flex;
@@ -23,7 +22,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            line-height: normal; /* Reset for header to prevent massive expansion */
         }
         .logo-container {
             display: flex;
@@ -121,7 +119,6 @@
             margin-bottom: 20px;
             color: #061c02;
             font-weight: bold;
-            line-height: 1.2; /* Kept slightly tighter for the large title */
         }
         main p {
             font-size: 1.25rem;
@@ -129,7 +126,7 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 2; /* Explicit double spacing */
+            line-height: 1.6;
             font-weight: bold;
         }
 
@@ -144,17 +141,53 @@
         }
         .content-section p {
             font-size: 1.2rem;
-            line-height: 2; /* Explicit double spacing */
+            line-height: 1.6;
             color: #061c02;
-            font-weight: bold; /* Explicit bold */
+            font-weight: normal; /* Slightly lighter weight for body text readability */
         }
         
         /* Specific Backgrounds */
         .bg-pale-green {
-            background-color: rgba(6, 28, 2, 0.08); 
+            background-color: rgba(6, 28, 2, 0.08); /* Very pale version of #061c02 */
         }
         .bg-white {
             background-color: #ffffff;
+        }
+
+        /* Three Column Layout */
+        .column-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .info-column {
+            flex: 1;
+            text-align: center;
+        }
+        .info-column img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .info-column p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #061c02;
+            font-weight: normal;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .column-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .info-column {
+                max-width: 400px; /* Constrain width on mobile */
+            }
         }
 
     </style>
@@ -219,6 +252,24 @@
     <section class="content-section bg-white">
         <div class="content-container">
             <p>Data-driven web mapping and spatial analysis services that turn complex environmental and policy data into clear, interactive maps—supporting better decisions, stronger community engagement, and more effective nature recovery on the ground.</p>
+        </div>
+    </section>
+
+    <!-- Third New Block: Three Columns -->
+    <section class="content-section bg-pale-green">
+        <div class="column-container">
+            <div class="info-column">
+                <img src="natureConnect_1.png" alt="Engaging interactive maps">
+                <p>Engage communities and stakeholders with intuitive, data-rich story maps.</p>
+            </div>
+            <div class="info-column">
+                <img src="natureConnect_1.png" alt="Actionable data insights">
+                <p>Transform complex data into actionable insights for effective environmental planning and nature recovery.</p>
+            </div>
+            <div class="info-column">
+                <img src="natureConnect_1.png" alt="Bespoke web tools">
+                <p>In depth analysis of nature recovery opportunites for project areas and land holdings.</p>
+            </div>
         </div>
     </section>
 
