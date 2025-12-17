@@ -124,6 +124,11 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
+
+            /* ADD THIS: Pull content up over the SVG's empty white bottom */
+            margin-top: -220px; 
+            position: relative; /* Ensures text sits 'on top' if z-index becomes an issue */
+            z-index: 10;
         }
         main h1 {
             font-size: 3rem;
@@ -269,18 +274,18 @@
     </div>
     
     <main>
-        <p>Integrated communications and mapping solutions that transform complex environmental data and policies into clear, engaging stories and interactive tools—driving impact, insight, and action for nature recovery and a greener economy.</p>
+        <h1>Expert mapping and communications services integrated for a greener and more sustainable world.</h1>
     </main>
 
     <section class="content-section bg-pale-green">
         <div class="content-container">
-            <p>Expert communications, editorial, and policy support services that translate complex EU biodiversity, environment, and development initiatives into clear, engaging content—strengthening visibility, stakeholder engagement, and impact across international conservation programmes.</p>
+            <p>Communications, editorial, and policy support services that translate complex EU biodiversity, environment, and development initiatives into clear, engaging content—strengthening visibility, stakeholder engagement, and impact across international conservation programmes.</p>
         </div>
     </section>
 
     <section class="content-section bg-white">
         <div class="content-container">
-            <p>Data-driven web mapping and spatial analysis services that turn complex environmental and policy data into clear, interactive maps—supporting better decisions, stronger community engagement, and more effective nature recovery on the ground.</p>
+            <p>Smart web mapping and spatial analysis services that turn complex environmental and policy data into clear, interactive maps—supporting better decisions, stronger community engagement, and more effective nature recovery on the ground.</p>
         </div>
     </section>
 
