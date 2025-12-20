@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angled Monitor with Synchronized Captions</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        /* Container to hold both the text (left) and monitor (right) */
+        .main-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 1400px;
+            gap: 60px; /* Space between text and monitor */
+        }
+
+        /* LEFT SIDE: Caption Area */
+        .caption-container {
+            flex: 1; /* Takes up remaining space on the left */
+            position: relative;
+            height: 200px; /* Fixed height to ensure stability */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Aligns text towards the monitor */
+        }
+
+        .caption {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 100%; 
+            opacity: 0;
+            transition: opacity 0.75s ease-in-out;
+            text-align: right; /* Right align the text block itself */
+        }
+
+        .caption.active {
+            opacity: 1;
+        }
+
+        .caption h3 {
+            font-style: italic;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: #333;
+            margin: 0;
+        }
+
+        /* RIGHT SIDE: Monitor Wrapper */
+        .monitor-wrapper {
+            perspective: 1200px; /* Perspective moved here for the 3D effect */
+            flex: 0 0 auto; /* Do not shrink/grow */
+        }
+
+        .monitor-panel {
+            width: 800px;
+            height: 500px;
+            background-color: #ebeef2;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
+            
+            /* Preserving the "viewed from the right" angle */
+            transform: rotateY(-15deg);
+            transform-style: preserve-3d;
+            transform-origin: center center;
+        }
+
+        .screen-container {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #333;
+            box-sizing: border-box;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 0.75s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-layout">
+        
+        <!-- LEFT: Synchronized Text Captions -->
+        <div class="caption-container">
+            <!-- Caption 1 -->
+            <div class="caption active">
+                <h3>historic mapping is cool, text for map frame in map animation, text for map frame in map animation,</h3>
+            </div>
+            <!-- Caption 2 -->
+            <div class="caption">
+                <h3>aerial photos are useful, text for map frame in map animation, text for map frame in map animation,</h3>
+            </div>
+            <!-- Caption 3 -->
+            <div class="caption">
+                <h3>tree data helpful for gapping up, text for map frame in map animation, text for map frame in map animation,</h3>
+            </div>
+        </div>
+
+        <!-- RIGHT: Angled Monitor -->
+        <div class="monitor-wrapper">
+            <div class="monitor-panel">
+                <div class="screen-container">
+                    <div class="slide active" style="background-image: url('map_1.jpg');"></div>
+                    <div class="slide" style="background-image: url('map_2.jpg');"></div>
+                    <div class="slide" style="background-image: url('map_3.jpg');"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const captions = document.querySelectorAll('.caption');
+        
+        let currentIndex = 0;
+        const displayTime = 4000; 
+
+        function showNextContent() {
+            // Determine next index
+            const nextIndex = (currentIndex + 1) % slides.length;
+
+            // Remove active class from current items
+            slides[currentIndex].classList.remove('active');
+            captions[currentIndex].classList.remove('active');
+
+            // Add active class to next items
+            slides[nextIndex].classList.add('active');
+            captions[nextIndex].classList.add('active');
+
+            // Update index
+            currentIndex = nextIndex;
+        }
+
+        setInterval(showNextContent, displayTime);
+    </script>
+</body>
+</html>

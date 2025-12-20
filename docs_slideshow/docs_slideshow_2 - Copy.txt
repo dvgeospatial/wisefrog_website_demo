@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixed Format Slideshow with Captions</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffffff;
+            font-family: sans-serif;
+            overflow: hidden; /* Prevent scrollbars during transitions */
+        }
+
+        /* Container to hold both the text (left) and slideshow (right) */
+        .main-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 1400px;
+            gap: 60px; /* Space between text and slideshow */
+        }
+
+        /* LEFT SIDE: Caption Area */
+        .caption-container {
+            flex: 1; /* Takes up remaining space on the left */
+            position: relative;
+            height: 200px; /* Fixed height to ensure stability */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Aligns text towards the slideshow */
+        }
+
+        .caption {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 100%; 
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            text-align: right; /* Right align the text block itself */
+        }
+
+        .caption.active {
+            opacity: 1;
+        }
+
+        .caption h3 {
+            font-style: italic;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: #333;
+            margin: 0;
+        }
+
+        /* RIGHT SIDE: Slideshow Container */
+        .slideshow-wrapper {
+            flex: 0 0 auto; /* Prevent shrinking/growing */
+        }
+
+        .slideshow-container {
+            position: relative;
+            /* 
+               COMBINED DIMENSIONS:
+               Width = 800px (Fits the landscape screenshot)
+               Height = 600px (Fits the tall report covers)
+            */
+            width: 800px; 
+            height: 600px; 
+            
+            background-color: #ffffff; 
+            overflow: hidden; 
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            /* Ensures both Tall and Wide images fit inside without cutting off */
+            object-fit: contain; 
+            
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 0;
+            
+            /* 
+               Added white background to the image element itself.
+               This ensures transparency doesn't show the slide underneath.
+            */
+            background-color: #ffffff; 
+        }
+
+        /* Ensure the first slide is visible initially if desired, 
+           or let JS handle the 'active' class assignment. 
+           (In this code, we manually add 'active' to the first element in HTML) */
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-layout">
+        
+        <!-- LEFT: Synchronized Text Captions -->
+        <div class="caption-container">
+            <!-- Caption 1 (Matches Image 1) -->
+            <div class="caption active">
+                <h3>text for map frame in map animation, text for map frame in map animation, text for map frame in map animation,</h3>
+            </div>
+            <!-- Caption 2 (Matches Image 2) -->
+            <div class="caption">
+                <h3>text for map frame in map animation, text for map frame in map animation, text for map frame in map animation,</h3>
+            </div>
+            <!-- Caption 2 (Matches Image 2) -->
+            <div class="caption">
+                <h3> linkedIn frame in map animation, text for map frame in map animation, text for map frame in map animation,</h3>
+            </div>
+        </div>
+
+        <!-- RIGHT: Slideshow -->
+        <div class="slideshow-wrapper">
+            <div class="slideshow-container">
+                <!-- Portrait Image 2 -->
+                <img src="largerThanJaguarsDS.png" class="slide active" alt="Synthesis Cover">
+                
+                <!-- Landscape Image -->
+                <img src="largerThanTigersDS.png" class="slide" alt="Nature Connect Interface">
+
+                <!-- Landscape Image -->
+                <img src="naturaAfrica.png" class="slide" alt="Nature Connect Interface">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const captions = document.querySelectorAll('.caption');
+            let currentIndex = 0;
+            const displayTime = 3000; // 3 seconds per slide
+            
+            setInterval(() => {
+                // Identify current items
+                const currentSlide = slides[currentIndex];
+                const currentCaption = captions[currentIndex];
+
+                // Calculate next index
+                currentIndex = (currentIndex + 1) % slides.length;
+                
+                const nextSlide = slides[currentIndex];
+                const nextCaption = captions[currentIndex];
+
+                // Remove active class (Fade Out)
+                currentSlide.classList.remove('active');
+                currentCaption.classList.remove('active');
+                
+                // Add active class (Fade In)
+                nextSlide.classList.add('active');
+                nextCaption.classList.add('active');
+
+            }, displayTime);
+        });
+    </script>
+</body>
+</html>
