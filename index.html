@@ -25,15 +25,27 @@
             z-index: 1000;
         }
 
+        /* --- UPDATED LOGO STYLES --- */
         .logo-container {
             display: flex;
             align-items: center;
+            gap: 20px; /* Controls space between the frog and the text */
         }
-        .logo-container img {
-            max-height: 90px;  /* cap logo height */
+        
+        /* Independent sizing for the Frog */
+        .logo-frog {
+            max-height: 100px; /* Adjust this value to size the frog */
             height: auto;
             width: auto;
         }
+
+        /* Independent sizing for the Text */
+        .logo-text {
+            max-height: 60px; /* Adjust this value to size the text independently */
+            height: auto;
+            width: auto;
+        }
+        /* --------------------------- */
         
         nav ul {
             list-style: none;
@@ -396,7 +408,10 @@
     
     <header>
         <div class="logo-container">
-            <img src="images/logo_061c02.png" alt="Wisefrog Logo">
+            <!-- Frog Image -->
+            <img src="images/frog_best.svg" alt="Wisefrog Logo" class="logo-frog">
+            <!-- Text Image placed to the right -->
+            <img src="images/wisefrog_text.svg" alt="Wisefrog Text" class="logo-text">
         </div>
         <nav aria-label="Primary">
             <ul>
@@ -570,5 +585,3 @@
     </script>
 </body>
 </html>
-
-
