@@ -17,7 +17,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 24px; /* compact header */
+            padding: 8px 24px;
             background-color: #ffffff;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             position: sticky;
@@ -25,27 +25,23 @@
             z-index: 1000;
         }
 
-        /* --- UPDATED LOGO STYLES --- */
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px; /* Controls space between the frog and the text */
+            gap: 20px;
         }
         
-        /* Independent sizing for the Frog */
         .logo-frog {
-            max-height: 80px; /* Adjust this value to size the frog */
+            max-height: 100px;
             height: auto;
             width: auto;
         }
 
-        /* Independent sizing for the Text */
         .logo-text {
-            max-height: 60px; /* Adjust this value to size the text independently */
+            max-height: 60px;
             height: auto;
             width: auto;
         }
-        /* --------------------------- */
         
         nav ul {
             list-style: none;
@@ -117,7 +113,6 @@
             display: none; 
         }
 
-        /* Top Wave Container */
         .wave-container-top {
             width: 100%;
             display: block;
@@ -133,7 +128,7 @@
         }
 
         main {
-            padding: 40px 40px 60px;
+            padding: 100px 40px 350px;
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
@@ -145,7 +140,7 @@
             font-size: 3rem;
             margin-bottom: 20px;
             color: #061c02;
-            font-weight: bold;
+            font-weight: normal;
         }
         main p {
             font-size: 1.25rem;
@@ -154,7 +149,7 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
-            font-weight: bold;
+            font-weight: normal;
         }
 
         .content-section {
@@ -206,7 +201,6 @@
             font-weight: normal;
         }
 
-        /* Footer Wave Styling */
         .wave-footer {
             width: 100%;
             line-height: 0;
@@ -219,50 +213,88 @@
             transform: scaleY(-1); 
         }
 
-        /* --- LAYOUT UTILITIES --- */
+        /* --- NEW MAP SLIDESHOW STYLES --- */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .static-intro {
+            text-align: center;
+            max-width: 900px;
+            margin-bottom: 60px;
+            font-style: italic;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: #061c02;
+        }
+
+        .static-intro h3 {
+            font-style: italic;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: #061c02;
+            margin: 0;
+            font-weight: normal;
+        }
+
         .main-layout {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 90%;
-            max-width: 1400px;
+            width: 100%;
             gap: 60px;
         }
 
-        .caption-container {
-            flex: 1; 
-            position: relative;
-            height: 200px; 
+        .left-column {
+            flex: 1;
             display: flex;
-            align-items: center;
-            justify-content: flex-end; 
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: right;
         }
 
-        /* --- MONITOR SLIDESHOW STYLES (Top Section) --- */
-        
+        .caption-container {
+            position: relative;
+            width: 100%;
+            height: 120px;
+        }
+
         .caption {
             position: absolute;
-            top: 50%;
+            top: 0;
             right: 0;
-            transform: translateY(-50%);
-            width: 100%; 
+            width: 100%;
             opacity: 0;
             transition: opacity 0.75s ease-in-out;
-            text-align: right; 
+            text-align: right;
+            pointer-events: none;
         }
-        .caption.active { opacity: 1; }
+
+        .caption.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         .caption h3 {
             font-style: italic;
             font-size: 1.5rem;
             line-height: 1.4;
             color: #061c02;
             margin: 0;
+            font-weight: normal;
         }
 
         .monitor-wrapper {
-            perspective: 1200px; 
-            flex: 0 0 auto; 
+            perspective: 1200px;
+            flex: 0 0 auto;
         }
+
         .monitor-panel {
             width: 800px;
             height: 500px;
@@ -274,6 +306,7 @@
             transform-style: preserve-3d;
             transform-origin: center center;
         }
+
         .screen-container {
             width: 100%;
             height: 100%;
@@ -283,6 +316,7 @@
             border: 2px solid #333;
             box-sizing: border-box;
         }
+
         .slide {
             position: absolute;
             top: 0;
@@ -295,20 +329,23 @@
             z-index: 1;
             transition: opacity 0.75s ease-in-out;
         }
-        .slide.active { opacity: 1; z-index: 2; }
 
-        /* --- DOCS SLIDESHOW STYLES (New Section) --- */
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
 
+        /* --- DOCS SLIDESHOW STYLES --- */
         .slideshow-wrapper {
-            flex: 0 0 auto; 
+            flex: 0 0 auto;
         }
 
         .doc-slideshow-container {
             position: relative;
-            width: 800px; 
-            height: 600px; 
-            background-color: #ffffff; 
-            overflow: hidden; 
+            width: 800px;
+            height: 600px;
+            background-color: #ffffff;
+            overflow: hidden;
         }
 
         .doc-slide {
@@ -317,11 +354,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain; 
+            object-fit: contain;
             opacity: 0;
             transition: opacity 1s ease-in-out;
             z-index: 0;
-            background-color: #ffffff; 
+            background-color: #ffffff;
         }
 
         .doc-slide.active {
@@ -334,10 +371,10 @@
             top: 50%;
             right: 0;
             transform: translateY(-50%);
-            width: 100%; 
+            width: 100%;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            text-align: right; 
+            text-align: right;
         }
 
         .doc-caption.active {
@@ -358,8 +395,10 @@
                 flex-direction: column;
                 gap: 30px;
             }
+            .left-column {
+                align-items: center;
+            }
             .caption-container {
-                justify-content: center;
                 height: auto;
                 margin-bottom: 20px;
             }
@@ -369,16 +408,16 @@
                 transform: none;
                 top: auto;
                 right: auto;
-                display: none; 
+                display: none;
             }
             .caption.active, .doc-caption.active {
                 display: block;
             }
             .monitor-panel {
-                width: 100%; 
-                max-width: 600px; 
-                height: 350px; 
-                transform: none; 
+                width: 100%;
+                max-width: 600px;
+                height: 350px;
+                transform: none;
             }
             .doc-slideshow-container {
                 width: 100%;
@@ -393,10 +432,10 @@
                 align-items: center;
             }
             .info-column {
-                max-width: 400px; 
+                max-width: 400px;
             }
             .monitor-panel {
-                height: 250px; 
+                height: 250px;
             }
             main h1 {
                 font-size: 2rem;
@@ -408,9 +447,7 @@
     
     <header>
         <div class="logo-container">
-            <!-- Frog Image -->
             <img src="images/frog_best.svg" alt="Wisefrog Logo" class="logo-frog">
-            <!-- Text Image placed to the right -->
             <img src="images/wisefrog_text.svg" alt="Wisefrog Text" class="logo-text">
         </div>
         <nav aria-label="Primary">
@@ -451,7 +488,6 @@
         </nav>
     </header>
 
-    <!-- WAVES_TOP -->
     <div class="wave-container-top">
         <svg width="1440" height="360" viewBox="0 0 1440 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <path d="M 0 360 L 0 -14 Q 0 -14 0 -12.327117465418544 Q 0 -10.654234930837088 36 -10.578179280446735 Q 72 -10.502123630056381 108 -10.451097630632912 Q 144 -10.400071631209443 180 -10.76101501406339 Q 216 -11.121958396917334 252 -12.157265117690185 Q 288 -13.192571838463037 324 -14.913726391414325 Q 360 -16.634880944365616 396 -18.765114395276456 Q 432 -20.895347846187292 468 -22.937336363455195 Q 504 -24.9793248807231 540 -26.366870847712825 Q 576 -27.75441681470255 612 -28.037095465726527 Q 648 -28.3197741167505 684 -27.31721729311044 Q 720 -26.314660469470375 756 -24.18685531136527 Q 792 -22.059050153260166 828 -19.267444097155007 Q 864 -16.475838041049844 900 -13.64731932218579 Q 936 -10.818800603321739 972 -8.557820767848185 Q 1008 -6.296840932374632 1044 -5.008531174238282 Q 1080 -3.720221416101931 1116 -3.503232174557735 Q 1152 -3.2862429330135394 1188 -3.929671366179445 Q 1224 -4.573099799345351 1260 -5.655774577823386 Q 1296 -6.7384493563014205 1332 -7.7936020445377405 Q 1368 -8.848754732774061 1404 -9.534986143139554 Q 1440 -10.221217553505046 1440 -10.221217553505046 L 1440 360 Z" fill="#bae6fd" stroke="none" />
@@ -465,34 +501,50 @@
         <h1><em>Expert mapping and communications for a greener and more sustainable future.</em></h1>
     </main>
 
-    <!-- SECTION: Synchronized Captions & Monitor (Original) -->
+    <!-- SECTION: NEW MAP SLIDESHOW WITH HEADER -->
     <section class="content-section bg-pale-green">
-        <div class="main-layout">
-            <div class="caption-container">
-                <div class="caption active">
-                    <h3>Smart web mapping and spatial analysis services that turn complex environmental and policy data into clear, interactive maps—supporting better decisions, stronger community engagement, and more effective nature recovery on the ground.</h3>
-                </div>
-                <div class="caption">
-                    <h3>Smart web mapping and spatial analysis services that turn complex environmental and policy data into clear, interactive maps—supporting better decisions, stronger community engagement, and more effective nature recovery on the ground.</h3>
-                </div>
-                <div class="caption">
-                    <h3>Smart web mapping and spatial analysis services that turn complex environmental and policy data into clear, interactive maps—supporting better decisions, stronger community engagement, and more effective nature recovery on the ground.</h3>
-                </div>
+        <div class="content-wrapper">
+            <div class="static-intro">
+                <h3>Smart mapping that delivers practical insight, informs decisions, promotes collaboration, and helps deliver effective nature recovery measures on the ground.</h3>
             </div>
 
-            <div class="monitor-wrapper">
-                <div class="monitor-panel">
-                    <div class="screen-container">
-                        <div class="slide active" style="background-image: url('maps_slideshow/map_1.jpg');"></div>
-                        <div class="slide" style="background-image: url('maps_slideshow/map_2.jpg');"></div>
-                        <div class="slide" style="background-image: url('maps_slideshow/map_3.jpg');"></div>
+            <div class="main-layout">
+                <div class="left-column">
+                    <div class="caption-container">
+                        <div class="caption active">
+                            <h3>Detailed plans and profiling for hedgerow condition assessments across your land holding</h3>
+                        </div>
+                        <div class="caption">
+                            <h3>Integrated Local Nature Recovery Strategy mapping to identify numerous funding opportunities</h3>
+                        </div>
+                        <div class="caption">
+                            <h3>Identify optimal opportunites for grassy field corners and woodland margins</h3>
+                        </div>
+                        <div class="caption">
+                            <h3>Locate lost ponds for restoration</h3>
+                        </div>
+                        <div class="caption">
+                            <h3>Locate lost ponds for restoration</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="monitor-wrapper">
+                    <div class="monitor-panel">
+                        <div class="screen-container">
+                            <div class="slide active" style="background-image: url('maps_slideshow/hedgerowProfile_1.jpg');"></div>
+                            <div class="slide" style="background-image: url('maps_slideshow/lnrs_integration_2.JPG');"></div>
+                            <div class="slide" style="background-image: url('maps_slideshow/identifyAwkwardCorners.JPG');"></div>
+                            <div class="slide" style="background-image: url('maps_slideshow/ghostPonds.JPG');"></div>
+                            <div class="slide" style="background-image: url('maps_slideshow/ghostPonds_2.JPG');"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW SECTION: REPLACED TEXT WITH DOCS SLIDESHOW -->
+    <!-- SECTION: DOCS SLIDESHOW -->
     <section class="content-section bg-white">
         <div class="main-layout">
             <div class="caption-container">
@@ -534,27 +586,26 @@
         </div>
     </section>
 
-    <!-- WAVES_BOTTOM -->
     <footer class="wave-footer">
         <div class="wave-container">
             <svg width="1440" height="360" viewBox="0 0 1440 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
               <path d="M 0 360 L 0 -14 Q 0 -14 0 -12.327117465418544 Q 0 -10.654234930837088 36 -10.578179280446735 Q 72 -10.502123630056381 108 -10.451097630632912 Q 144 -10.400071631209443 180 -10.76101501406339 Q 216 -11.121958396917334 252 -12.157265117690185 Q 288 -13.192571838463037 324 -14.913726391414325 Q 360 -16.634880944365616 396 -18.765114395276456 Q 432 -20.895347846187292 468 -22.937336363455195 Q 504 -24.9793248807231 540 -26.366870847712825 Q 576 -27.75441681470255 612 -28.037095465726527 Q 648 -28.3197741167505 684 -27.31721729311044 Q 720 -26.314660469470375 756 -24.18685531136527 Q 792 -22.059050153260166 828 -19.267444097155007 Q 864 -16.475838041049844 900 -13.64731932218579 Q 936 -10.818800603321739 972 -8.557820767848185 Q 1008 -6.296840932374632 1044 -5.008531174238282 Q 1080 -3.720221416101931 1116 -3.503232174557735 Q 1152 -3.2862429330135394 1188 -3.929671366179445 Q 1224 -4.573099799345351 1260 -5.655774577823386 Q 1296 -6.7384493563014205 1332 -7.7936020445377405 Q 1368 -8.848754732774061 1404 -9.534986143139554 Q 1440 -10.221217553505046 1440 -10.221217553505046 L 1440 360 Z" fill="#bae6fd" stroke="none" />
-              <path d="M 0 360 L 0 26 Q 0 26 0 20.45365059017434 Q 0 14.907301180348682 36 13.440860879080102 Q 72 11.974420577811522 108 11.658696848134289 Q 144 11.342973118457056 180 12.331546024301431 Q 216 13.320118930145805 252 15.42311384965577 Q 288 17.526108769165738 324 20.26263807540932 Q 360 22.999167381652907 396 25.742651683313326 Q 432 28.48613598497375 468 30.653764780407936 Q 504 32.82139357584212 540 34.04416940303244 Q 576 35.26694523022277 612 35.483906770874434 Q 648 35.7008683115261 684 35.14767531977033 Q 720 34.594482328014564 756 33.69327193823156 Q 792 32.79206154844856 828 31.983537486248355 Q 864 31.175013424048153 900 30.75325058289953 Q 936 30.331487741750905 972 30.340164115708795 Q 1008 30.34884048966668 1044 30.57523846630798 Q 1080 30.801636442949274 1116 30.869681874208148 Q 1152 30.93772730546702 1188 30.465891975522133 Q 1224 29.99405664557725 1260 28.76059450893836 Q 1296 27.52713237229947 1332 25.582073125916082 Q 1368 23.63701387953269 1404 21.318706714038015 Q 1440 19.00039954854334 1440 19.00039954854334 L 1440 360 Z" fill="#d1eefe" stroke="none" />
-              <path d="M 0 360 L 0 66 Q 0 66 0 68.94330898798667 Q 0 71.88661797597334 36 73.0310713102993 Q 72 74.17552464462524 108 74.38727350785787 Q 144 74.5990223710905 180 74.13718277901773 Q 216 73.67534318694499 252 72.96034054166026 Q 288 72.24533789637553 324 71.68889642150319 Q 360 71.13245494663086 396 70.97930377103623 Q 432 70.8261525954416 468 71.06403738065265 Q 504 71.30192216586369 540 71.67175954827027 Q 576 72.04159693067687 612 72.14369986411168 Q 648 72.2458027975465 684 71.70366500094485 Q 720 71.16152720434322 756 69.78379375178133 Q 792 68.40606029921946 828 66.28738370462801 Q 864 64.16870711003658 900 61.691218935406795 Q 936 59.21373076077701 972 56.945529634152905 Q 1008 54.6773285075288 1044 53.20058914583255 Q 1080 51.723849784136306 1116 51.45022676067238 Q 1152 51.176603737208445 1188 52.21273773022983 Q 1224 53.24887172325121 1260 55.35814923405516 Q 1296 57.467426744859104 1332 60.14143993765386 Q 1368 62.81545313044861 1404 65.43119692694447 Q 1440 68.04694072344031 1440 68.04694072344031 L 1440 360 Z" fill="#e8f7fe" stroke="none" />
-              <path d="M 0 360 L 0 106 Q 0 106 0 109.09665196116282 Q 0 112.19330392232564 36 112.70722295428305 Q 72 113.22114198624048 108 113.3606284767643 Q 144 113.50011496728811 180 112.89592823191033 Q 216 112.29174149653255 252 110.78383875493874 Q 288 109.27593601334493 324 107.00252942608485 Q 360 104.72912283882476 396 102.1131052916387 Q 432 99.49708774445263 468 97.1314689473619 Q 504 94.76585015027116 540 93.2352610096301 Q 576 91.70467186898902 612 91.4027307028352 Q 648 91.10078953668138 684 92.10520038649396 Q 720 93.10961123630655 756 95.15750046186716 Q 792 97.20538968742775 828 99.77727487463935 Q 864 102.34916006185095 900 104.83292063590986 Q 936 107.31668120996876 972 109.19581428300543 Q 1008 111.07494735604212 1044 112.07763020694989 Q 1080 113.08031305785768 1116 113.24000233784076 Q 1152 113.39969161782385 1188 113.00915918089912 Q 1224 112.61862674397439 1260 112.09655055357109 Q 1296 111.57447436316781 1332 111.29396934741747 Q 1368 111.01346433166714 1404 111.1547044849027 Q 1440 111.29594463813825 1440 111.29594463813825 L 1440 360 Z" fill="#ffffff" stroke="none" />
+          <path d="M 0 360 L 0 26 Q 0 26 0 20.45365059017434 Q 0 14.907301180348682 36 13.440860879080102 Q 72 11.974420577811522 108 11.658696848134289 Q 144 11.342973118457056 180 12.331546024301431 Q 216 13.320118930145805 252 15.42311384965577 Q 288 17.526108769165738 324 20.26263807540932 Q 360 22.999167381652907 396 25.742651683313326 Q 432 28.48613598497375 468 30.653764780407936 Q 504 32.82139357584212 540 34.04416940303244 Q 576 35.26694523022277 612 35.483906770874434 Q 648 35.7008683115261 684 35.14767531977033 Q 720 34.594482328014564 756 33.69327193823156 Q 792 32.79206154844856 828 31.983537486248355 Q 864 31.175013424048153 900 30.75325058289953 Q 936 30.331487741750905 972 30.340164115708795 Q 1008 30.34884048966668 1044 30.57523846630798 Q 1080 30.801636442949274 1116 30.869681874208148 Q 1152 30.93772730546702 1188 30.465891975522133 Q 1224 29.99405664557725 1260 28.76059450893836 Q 1296 27.52713237229947 1332 25.582073125916082 Q 1368 23.63701387953269 1404 21.318706714038015 Q 1440 19.00039954854334 1440 19.00039954854334 L 1440 360 Z" fill="#d1eefe" stroke="none" />
+          <path d="M 0 360 L 0 66 Q 0 66 0 68.94330898798667 Q 0 71.88661797597334 36 73.0310713102993 Q 72 74.17552464462524 108 74.38727350785787 Q 144 74.5990223710905 180 74.13718277901773 Q 216 73.67534318694499 252 72.96034054166026 Q 288 72.24533789637553 324 71.68889642150319 Q 360 71.13245494663086 396 70.97930377103623 Q 432 70.8261525954416 468 71.06403738065265 Q 504 71.30192216586369 540 71.67175954827027 Q 576 72.04159693067687 612 72.14369986411168 Q 648 72.2458027975465 684 71.70366500094485 Q 720 71.16152720434322 756 69.78379375178133 Q 792 68.40606029921946 828 66.28738370462801 Q 864 64.16870711003658 900 61.691218935406795 Q 936 59.21373076077701 972 56.945529634152905 Q 1008 54.6773285075288 1044 53.20058914583255 Q 1080 51.723849784136306 1116 51.45022676067238 Q 1152 51.176603737208445 1188 52.21273773022983 Q 1224 53.24887172325121 1260 55.35814923405516 Q 1296 57.467426744859104 1332 60.14143993765386 Q 1368 62.81545313044861 1404 65.43119692694447 Q 1440 68.04694072344031 1440 68.04694072344031 L 1440 360 Z" fill="#e8f7fe" stroke="none" />
+          <path d="M 0 360 L 0 106 Q 0 106 0 109.09665196116282 Q 0 112.19330392232564 36 112.70722295428305 Q 72 113.22114198624048 108 113.3606284767643 Q 144 113.50011496728811 180 112.89592823191033 Q 216 112.29174149653255 252 110.78383875493874 Q 288 109.27593601334493 324 107.00252942608485 Q 360 104.72912283882476 396 102.1131052916387 Q 432 99.49708774445263 468 97.1314689473619 Q 504 94.76585015027116 540 93.2352610096301 Q 576 91.70467186898902 612 91.4027307028352 Q 648 91.10078953668138 684 92.10520038649396 Q 720 93.10961123630655 756 95.15750046186716 Q 792 97.20538968742775 828 99.77727487463935 Q 864 102.34916006185095 900 104.83292063590986 Q 936 107.31668120996876 972 109.19581428300543 Q 1008 111.07494735604212 1044 112.07763020694989 Q 1080 113.08031305785768 1116 113.24000233784076 Q 1152 113.39969161782385 1188 113.00915918089912 Q 1224 112.61862674397439 1260 112.09655055357109 Q 1296 111.57447436316781 1332 111.29396934741747 Q 1368 111.01346433166714 1404 111.1547044849027 Q 1440 111.29594463813825 1440 111.29594463813825 L 1440 360 Z" fill="#ffffff" stroke="none" />
             </svg>
         </div>
     </footer>
 
     <script>
-        // --- LOGIC FOR TOP MONITOR SLIDESHOW ---
+        // MAP SLIDESHOW LOGIC
         const slides = document.querySelectorAll('.slide');
         const captions = document.querySelectorAll('.caption');
         
         let currentIndex = 0;
-        const displayTime = 8000; 
+        const displayTime = 5000;
 
-        function showNextMonitorSlide() {
+        function showNextContent() {
             const nextIndex = (currentIndex + 1) % slides.length;
             slides[currentIndex].classList.remove('active');
             captions[currentIndex].classList.remove('active');
@@ -563,9 +614,9 @@
             currentIndex = nextIndex;
         }
 
-        setInterval(showNextMonitorSlide, displayTime);
+        setInterval(showNextContent, displayTime);
 
-        // --- LOGIC FOR NEW DOCS SLIDESHOW ---
+        // DOCS SLIDESHOW LOGIC
         const docSlides = document.querySelectorAll('.doc-slide');
         const docCaptions = document.querySelectorAll('.doc-caption');
         
@@ -585,4 +636,3 @@
     </script>
 </body>
 </html>
-
